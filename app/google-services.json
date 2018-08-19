@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "294975311036",
+    "firebase_url": "https://sugar-me-58e5a.firebaseio.com",
+    "project_id": "sugar-me-58e5a",
+    "storage_bucket": "sugar-me-58e5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294975311036:android:a8286ac2b308ca68",
+        "android_client_info": {
+          "package_name": "br.com.mateus.sugarme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294975311036-smb618qo55ba0nj5rco0hv319vj9rvah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.mateus.sugarme",
+            "certificate_hash": "284fc5060be0a04d1f7defda9466209842987a7c"
+          }
+        },
+        {
+          "client_id": "294975311036-juqpubatu63v6lnm00a75hf7a6ft6br6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYx2C7mDQpawx3jMvRskgLpBb2NYV1JGA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "294975311036-juqpubatu63v6lnm00a75hf7a6ft6br6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
