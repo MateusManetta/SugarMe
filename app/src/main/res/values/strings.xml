@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">SugarMe</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="nome">Nome:</string>
+    <string name="idade">Idade:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="dtNascimento">Data de Nascimento:</string>
+    <string name="cpf">CPF:</string>
+    <string name="crm">CRM(Apenas para médicos):</string>
+    <string name="paciente">Paciente</string>
+    <string name="medico">Medico</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="dadosIncorretos">Por favor, preencha os dados corretamente</string>
+    <string name="inseridoSucesso">Inserido com sucesso!</string>
+
 </resources>

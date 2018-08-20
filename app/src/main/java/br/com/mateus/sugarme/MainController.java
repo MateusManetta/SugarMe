@@ -15,6 +15,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.mateus.sugarme.View.CadastroActivity;
+import br.com.mateus.sugarme.View.MedicoActivity;
+import br.com.mateus.sugarme.View.PacienteActivity;
+
 public class MainController {
 
     public MainController() {
@@ -52,30 +56,43 @@ public class MainController {
     void verificaTipoUsuario(final Activity activity){
         final String userId = firebaseAuth.getCurrentUser().getUid();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        //Ver se é paciente
+        databaseReference.child("users").child("pacientes").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    if(dataSnapshot.child("tipo").getValue().toString().equals("Paciente")) {
                         Intent intent = new Intent(activity, PacienteActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         activity.startActivity(intent);
-                    }
-                    else {
-                        activity.startActivity(new Intent(activity, MedicoActivity.class));
-                    }
-                }
-                else{
-                    activity.startActivity(new Intent(activity, CadastroActivity.class));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
-    }
+        //Ver se é medico
+        databaseReference.child("users").child("medicos").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    Intent intent = new Intent(activity, MedicoActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    activity.startActivity(intent);
+                }
+                //Ainda nao possui tipo de usuario
+                else{
+                    Intent intent = new Intent(activity, CadastroActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    activity.startActivity(intent);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+    } //Fim do verifica tipo usuario
 
 }

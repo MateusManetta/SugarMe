@@ -1,14 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroActivity">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".View.CadastroActivity">
+
 
     <TextView
+        android:id="@+id/textViewCadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/cadastro" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RadioGroup
+            android:id="@+id/textRadioGroupMedico_paciente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonMedico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:baselineAligned="false"
+                android:text="@string/medico" />
+
+            <RadioButton
+                android:id="@+id/radioButtonPaciente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/paciente" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <!--Nome-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="30"
+            android:hint="@string/nome" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--DtNascimento-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputDtNascimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dtNascimento"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--Telefone-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/telefone"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--CPF-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputCpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cpf"
+            android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--CRM-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputCrm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="@string/crm"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <!--Lista de UF-->
+    <Spinner
+        android:id="@+id/spinnerUf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cadastro"/>
+        android:layout_gravity="center" />
 
-</android.support.constraint.ConstraintLayout>
+
+    <!--Botao Cadastrar-->
+    <Button
+        android:id="@+id/buttonCadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/cadastrar" />
+
+
+</LinearLayout>
