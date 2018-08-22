@@ -12,5 +12,6 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="dadosIncorretos">Por favor, preencha os dados corretamente</string>
     <string name="inseridoSucesso">Inserido com sucesso!</string>
+    <string name="logout">Logout</string>
 
 </resources>

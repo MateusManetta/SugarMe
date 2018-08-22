@@ -14,4 +14,9 @@ public class MedicoDAO {
         mDatabase =  FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").child("medicos").child(userId).setValue(medico);
     }
+
+    public void logout(){
+
+        FirebaseAuth.getInstance().signOut();
+    }
 }
