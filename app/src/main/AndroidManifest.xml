@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".View.PacienteActivity" />
         <activity android:name=".View.CadastroActivity" />
-        <activity android:name=".View.MedicoActivity"></activity>
+        <activity android:name=".View.MedicoActivity" />
+        <activity android:name=".View.EditarMedicoActivity"></activity>
     </application>
 
 </manifest>

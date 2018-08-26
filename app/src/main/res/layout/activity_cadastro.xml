@@ -79,6 +79,20 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <!--CPF-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputCpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cpf"
+            android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
+
     <!--Telefone-->
 
     <android.support.design.widget.TextInputLayout
@@ -92,20 +106,6 @@
             android:hint="@string/telefone"
             android:inputType="number" />
 
-    </android.support.design.widget.TextInputLayout>
-
-    <!--CPF-->
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputCpf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/cpf"
-            android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
     <!--CRM-->
@@ -123,6 +123,20 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <!--Especialidade-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textInputEspecialidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/especialidade" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <!--Lista de UF-->
     <Spinner
@@ -136,7 +150,7 @@
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="wrap_content"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:text="@string/cadastrar" />

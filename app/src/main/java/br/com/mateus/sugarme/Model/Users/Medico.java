@@ -6,17 +6,19 @@ public class Medico {
     private String dtNascimento;
     private String cpf;
     private String crm;
+    private String especialidade;
     private String uf;
 
 
 
-    public Medico(String nome, String telefone, String dtNascimento, String cpf, String crm, String uf) {
+    public Medico(String nome, String telefone, String dtNascimento, String cpf, String crm, String especialidade, String uf) {
         this.nome = nome;
         this.telefone = telefone;
         this.dtNascimento = dtNascimento;
         this.cpf = cpf;
         this.crm = crm;
         this.uf = uf;
+        this.especialidade = especialidade;
     }
 
     public Medico() {
@@ -69,5 +71,13 @@ public class Medico {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 }

@@ -34,6 +34,7 @@ public class CadastroActivity extends AppCompatActivity {
     private TextInputEditText textInputTelefone;
     private TextInputEditText textInputDtNascimento;
     private TextInputEditText textInputCpf;
+    private TextInputEditText textInputEspecialidade;
     private TextInputEditText textInputCrm;
     private Spinner spinnerUf;
     private Button buttonCadastrar;
@@ -55,10 +56,10 @@ public class CadastroActivity extends AppCompatActivity {
         textInputTelefone = (TextInputEditText) findViewById(R.id.textInputTelefone);
         textInputDtNascimento = (TextInputEditText) findViewById(R.id.textInputDtNascimento);
         textInputCpf = (TextInputEditText) findViewById(R.id.textInputCpf);
+        textInputEspecialidade = (TextInputEditText) findViewById(R.id.textInputEspecialidade);
         textInputCrm = (TextInputEditText) findViewById(R.id.textInputCrm);
         spinnerUf = (Spinner) findViewById(R.id.spinnerUf);
         buttonCadastrar = (Button) findViewById(R.id.buttonCadastrar);
-
 
 
         // Desabilitar CRM
@@ -67,6 +68,7 @@ public class CadastroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textInputCrm.setEnabled(false);
                 spinnerUf.setEnabled(false);
+                textInputEspecialidade.setEnabled(false);
             }
         });
 
@@ -76,6 +78,7 @@ public class CadastroActivity extends AppCompatActivity {
             public void onClick(View v) {
                 textInputCrm.setEnabled(true);
                 spinnerUf.setEnabled(true);
+                textInputEspecialidade.setEnabled(true);
             }
         });
 
@@ -97,7 +100,8 @@ public class CadastroActivity extends AppCompatActivity {
                 if(radioButtonMedico.isChecked()){
                     Medico medico = new Medico(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
                             textInputDtNascimento.getText().toString(),textInputCpf.getText().toString(),
-                            textInputCrm.getText().toString(), spinnerUf.getSelectedItem().toString());
+                            textInputCrm.getText().toString(),textInputEspecialidade.getText().toString() ,
+                            spinnerUf.getSelectedItem().toString());
                     MedicoController medicoController = new MedicoController();
                     if(medicoController.isDadosOk(medico)){
                         medicoDAO = new MedicoDAO();
@@ -109,7 +113,6 @@ public class CadastroActivity extends AppCompatActivity {
                     }
                     else{
                         Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
-
                     }
 
                 }

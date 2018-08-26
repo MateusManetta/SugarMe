@@ -21,4 +21,7 @@ public class PacienteDAO {
         mDatabase.child("users").child("pacientes").child(userId).setValue(paciente);
     }
 
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+    }
 }
