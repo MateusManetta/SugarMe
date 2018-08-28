@@ -15,4 +15,5 @@
     <string name="logout">Logout</string>
     <string name="especialidade">Especialidade</string>
     <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
 </resources>

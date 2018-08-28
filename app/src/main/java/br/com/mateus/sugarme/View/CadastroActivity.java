@@ -38,6 +38,9 @@ public class CadastroActivity extends AppCompatActivity {
     private TextInputEditText textInputCrm;
     private Spinner spinnerUf;
     private Button buttonCadastrar;
+    private Button buttonExcluir;
+    private Button buttonEditar;
+
 
     private PacienteDAO pacienteDAO;
     private MedicoDAO medicoDAO;
@@ -60,6 +63,8 @@ public class CadastroActivity extends AppCompatActivity {
         textInputCrm = (TextInputEditText) findViewById(R.id.textInputCrm);
         spinnerUf = (Spinner) findViewById(R.id.spinnerUf);
         buttonCadastrar = (Button) findViewById(R.id.buttonCadastrar);
+        buttonEditar = (Button) findViewById(R.id.buttonEditar);
+        buttonExcluir = (Button) findViewById(R.id.buttonExcluir);
 
 
         // Desabilitar CRM
@@ -116,7 +121,7 @@ public class CadastroActivity extends AppCompatActivity {
                     }
 
                 }
-                //Paciente Selecionad
+                //Paciente Selecionado
                 else{
                     Paciente paciente = new Paciente(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
                             textInputDtNascimento.getText().toString(),textInputCpf.getText().toString());

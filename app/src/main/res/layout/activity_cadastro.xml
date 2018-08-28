@@ -147,13 +147,40 @@
 
 
     <!--Botao Cadastrar-->
-    <Button
-        android:id="@+id/buttonCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="@string/cadastrar" />
 
+    <!--Botões-->
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--Botao Excluir-->
+        <Button
+            android:id="@+id/buttonExcluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/excluir"
+            android:visibility="invisible" />
+
+        <!--Botao Cadastrar-->
+        <Button
+            android:id="@+id/buttonCadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_x="122dp"
+            android:layout_y="2dp"
+            android:text="@string/cadastrar" />
+
+        <!--Botao Editar-->
+        <Button
+            android:id="@+id/buttonEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_x="264dp"
+            android:layout_y="0dp"
+            android:text="@string/editar"
+            android:visibility="invisible" />
+    </AbsoluteLayout>
 
 </LinearLayout>
