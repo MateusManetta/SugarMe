@@ -97,6 +97,7 @@ public class CadastroActivity extends AppCompatActivity {
         spinnerUf.setAdapter(adapter);
 
 
+        //Cadastrar
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +142,11 @@ public class CadastroActivity extends AppCompatActivity {
             }
 
         });
+
+
+        //Editar
+
+
 
     }//Fim do onCreate --------------
 }

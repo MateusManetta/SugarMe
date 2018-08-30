@@ -5,7 +5,7 @@ import br.com.mateus.sugarme.Model.Users.PacienteDAO;
 
 public class PacienteController {
 
-    private PacienteDAO pacienteDAO;
+    private PacienteDAO pacienteDAO = new PacienteDAO();
 
     public PacienteController() {
     }
@@ -16,7 +16,8 @@ public class PacienteController {
     }
 
     public void logout(){
-        pacienteDAO = new PacienteDAO();
         pacienteDAO.logout();
     }
+
+
 }

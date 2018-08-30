@@ -13,6 +13,7 @@ import br.com.mateus.sugarme.R;
 public class PacienteActivity extends AppCompatActivity {
     private PacienteController pacienteController;
     private Button buttonLogoutPaciente;
+    private Button buttonEditarPaciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,9 @@ public class PacienteActivity extends AppCompatActivity {
         pacienteController = new PacienteController();
 
         buttonLogoutPaciente = (Button) findViewById(R.id.buttonLogoutPaciente);
+        buttonEditarPaciente = (Button) findViewById(R.id.buttonEditarPaciente);
 
-        //Logout
+        //Logout Paciente
         buttonLogoutPaciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,5 +35,14 @@ public class PacienteActivity extends AppCompatActivity {
 
             }
         });
+
+        //Editar Paciente
+        buttonEditarPaciente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 }

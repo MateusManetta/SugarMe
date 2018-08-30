@@ -5,8 +5,8 @@ import br.com.mateus.sugarme.Model.Users.MedicoDAO;
 
 public class MedicoController {
 
-    private MedicoDAO medicoDAO;
-
+    private MedicoDAO medicoDAO = new MedicoDAO();
+    private Medico medico;
 
     public MedicoController() {
     }
@@ -17,7 +17,10 @@ public class MedicoController {
 
 
     public void logout(){
-        medicoDAO = new MedicoDAO();
         medicoDAO.logout();
+    }
+
+    public Medico recebeMedico() {
+        return medicoDAO.consultaMedico();
     }
 }

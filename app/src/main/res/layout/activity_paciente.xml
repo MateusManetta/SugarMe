@@ -11,11 +11,21 @@
         android:layout_height="wrap_content"
         android:text="paciente"/>
 
+    <!--Botao Logout Paciente-->
     <Button
         android:id="@+id/buttonLogoutPaciente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:layout_weight="1"/>
+
+    <!--Botao Editar Paciente-->
+    <Button
+        android:id="@+id/buttonEditarPaciente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/editar"
+        android:layout_weight="1" />
 
 
 </LinearLayout>
