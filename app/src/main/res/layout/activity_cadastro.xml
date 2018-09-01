@@ -152,6 +152,7 @@
     <AbsoluteLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <!--Botao Excluir-->
         <Button
             android:id="@+id/buttonExcluir"
@@ -159,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/excluir"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <!--Botao Cadastrar-->
         <Button

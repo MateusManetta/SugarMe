@@ -1,6 +1,7 @@
 package br.com.mateus.sugarme.Model.Users;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,15 @@ public class MedicoDAO {
         mDatabase.child("users").child("medicos").child(userId).setValue(medico);
     }
 
-    public void logout(){
+    public void excluir(){
+        getUserId();
+        mDatabase =  FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").child("medicos").child(userId).removeValue();
+        logout();
+    }
 
+
+    public void logout(){
         FirebaseAuth.getInstance().signOut();
     }
 
@@ -36,18 +44,18 @@ public class MedicoDAO {
         databaseReference.child("users").child("medicos").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                medico = dataSnapshot.getValue(Medico.class);
+                if (dataSnapshot.exists()){
+                    Log.d("Existe","Existe");
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-
         });
-
-
         return medico;
+
     }
 
     //Pegar Id Usuario

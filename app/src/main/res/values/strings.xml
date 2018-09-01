@@ -16,4 +16,11 @@
     <string name="especialidade">Especialidade</string>
     <string name="editar">Editar</string>
     <string name="excluir">Excluir</string>
+    <string name="dataInvalida">Data inválida</string>
+    <string name="confirmarExclusao">Confirmar Exclusão?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Nao</string>
+    <string name="tituloExclusao">Exclusao</string>
+    <string name="edicaoPaciente">Edição Paciente</string>
+    <string name="edicaoMedico">Edição Médico</string>
 </resources>

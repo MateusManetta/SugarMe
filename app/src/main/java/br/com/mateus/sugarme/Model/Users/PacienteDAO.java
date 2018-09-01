@@ -21,6 +21,19 @@ public class PacienteDAO {
         mDatabase.child("users").child("pacientes").child(userId).setValue(paciente);
     }
 
+    public void excluir(){
+        getUserId();
+        mDatabase =  FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").child("pacientes").child(userId).removeValue();
+        logout();
+    }
+
+    //Pegar Id Usuario
+    public void getUserId(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
+    }
+
     public void logout() {
         FirebaseAuth.getInstance().signOut();
     }

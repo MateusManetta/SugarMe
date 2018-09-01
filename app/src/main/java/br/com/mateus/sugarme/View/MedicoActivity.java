@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import br.com.mateus.sugarme.Controller.MedicoController;
 import br.com.mateus.sugarme.MainActivity;
@@ -16,6 +15,7 @@ public class MedicoActivity extends AppCompatActivity {
     private MedicoController medicoController;
     private Button buttonLogout;
     private Button buttonEditarMedico;
+    private Medico medico;
 
 
     @Override
@@ -43,9 +43,15 @@ public class MedicoActivity extends AppCompatActivity {
         buttonEditarMedico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Medico medico = new Medico();
-                medico = medicoController.recebeMedico();
-                Toast.makeText(MedicoActivity.this, medico.getDtNascimento(), Toast.LENGTH_SHORT).show();
+//                Medico medico = new Medico();
+//                medico = medicoController.recebeMedico();
+//                Toast.makeText(MedicoActivity.this, medico.getNome(), Toast.LENGTH_SHORT).show();
+
+                //Trocar de Activity
+                Intent intent = new Intent(MedicoActivity.this, CadastroActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("radio","editarMedico");
+                MedicoActivity.this.startActivity(intent);
             }
         });
 
