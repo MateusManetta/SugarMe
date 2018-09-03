@@ -43,15 +43,7 @@ public class MedicoActivity extends AppCompatActivity {
         buttonEditarMedico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Medico medico = new Medico();
-//                medico = medicoController.recebeMedico();
-//                Toast.makeText(MedicoActivity.this, medico.getNome(), Toast.LENGTH_SHORT).show();
-
-                //Trocar de Activity
-                Intent intent = new Intent(MedicoActivity.this, CadastroActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("radio","editarMedico");
-                MedicoActivity.this.startActivity(intent);
+                  medicoController.recebeMedico(MedicoActivity.this);
             }
         });
 

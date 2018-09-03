@@ -1,5 +1,7 @@
 package br.com.mateus.sugarme.Controller;
 
+import android.app.Activity;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -58,6 +60,7 @@ public class PacienteController {
         return cpf.equals(cpf.substring(0,9) + digito1.toString() + digito2.toString());
     }
 
+    //Validação CPF
     private static int calcularDigito(String str, int[] peso) {
         int soma = 0;
         for (int indice=str.length()-1, digito; indice >= 0; indice-- ) {
@@ -102,4 +105,7 @@ public class PacienteController {
     }
 
 
+    public void recebePaciente(Activity activity) {
+        pacienteDAO.consultaPaciente(activity);
+    }
 }

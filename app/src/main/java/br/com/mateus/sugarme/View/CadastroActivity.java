@@ -107,44 +107,7 @@ public class CadastroActivity extends AppCompatActivity {
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Medico Selecionado
-                if(radioButtonMedico.isChecked()){
-                    Medico medico = new Medico(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
-                            textInputDtNascimento.getText().toString(),textInputCpf.getText().toString(),
-                            textInputCrm.getText().toString(),textInputEspecialidade.getText().toString() ,
-                            spinnerUf.getSelectedItem().toString());
-                    MedicoController medicoController = new MedicoController();
-                    if(medicoController.isDadosOk(medico)){
-                        medicoDAO = new MedicoDAO();
-                        medicoDAO.inserir(medico);
-                        Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CadastroActivity.this, MedicoActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        CadastroActivity.this.startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-                //Paciente Selecionado
-                else{
-                    Paciente paciente = new Paciente(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
-                            textInputDtNascimento.getText().toString(),textInputCpf.getText().toString());
-                    PacienteController pacienteController = new PacienteController();
-                    if(pacienteController.isDadosOk(paciente)){
-                        pacienteDAO = new PacienteDAO();
-                        pacienteDAO.inserir(paciente);
-                        Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CadastroActivity.this, PacienteActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        CadastroActivity.this.startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                insereFirebase();
             }
 
         });
@@ -152,6 +115,12 @@ public class CadastroActivity extends AppCompatActivity {
 
 
         //Editar
+        buttonEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insereFirebase();
+            }
+        });
 
 
         //Excluir
@@ -197,32 +166,43 @@ public class CadastroActivity extends AppCompatActivity {
 
 
         //Parametros do PutExtra
-
         Intent it = getIntent();
         if(it != null && it.getExtras() != null){
-            if(it.getStringExtra("radio").equals("editarPaciente")) {
-                this.setPaciente();
+            if(it.getStringExtra("radio").equals("editarMedico")) {
+                Medico medico = (Medico) it.getSerializableExtra("medico");
+                this.setMedico(medico);
             }
-            else if(it.getStringExtra("radio").equals("editarMedico")){
-                this.setMedico();
+            else if(it.getStringExtra("radio").equals("editarPaciente")){
+                Paciente paciente = (Paciente) it.getSerializableExtra("paciente");
+                this.setPaciente(paciente);
             }
         }
 
 
     }//Fim do onCreate --------------
 
-    private void setMedico(){
+    private void setMedico(Medico medico){
         this.radioButtonMedico.setChecked(true);
         this.radioButtonMedico.setEnabled(false);
         this.radioButtonPaciente.setEnabled(false);
-        buttonExcluir.setVisibility(View.VISIBLE);
-        buttonEditar.setVisibility(View.VISIBLE);
-        buttonCadastrar.setVisibility(View.INVISIBLE);
-        textViewCadastro.setText(R.string.edicaoMedico);
-
+        this.buttonExcluir.setVisibility(View.VISIBLE);
+        this.buttonEditar.setVisibility(View.VISIBLE);
+        this.buttonCadastrar.setVisibility(View.INVISIBLE);
+        this.textViewCadastro.setText(R.string.edicaoMedico);
+        this.textInputNome.setText(medico.getNome());
+        this.textInputCpf.setText(medico.getCpf());
+        this.textInputDtNascimento.setText(medico.getDtNascimento());
+        this.textInputTelefone.setText(medico.getTelefone());
+        //CRM
+        this.textInputCrm.setText(medico.getCrm());
+        this.textInputCrm.setEnabled(true);
+        this.textInputEspecialidade.setText(medico.getEspecialidade());
+        //Spinner
+        int pos = getIndex(medico.getUf());
+        spinnerUf.setSelection(pos);
     }
 
-    private void setPaciente(){
+    private void setPaciente(Paciente paciente){
         this.radioButtonPaciente.setChecked(true);
         this.radioButtonMedico.setEnabled(false);
         this.radioButtonPaciente.setEnabled(false);
@@ -230,6 +210,79 @@ public class CadastroActivity extends AppCompatActivity {
         buttonEditar.setVisibility(View.VISIBLE);
         buttonCadastrar.setVisibility(View.INVISIBLE);
         textViewCadastro.setText(R.string.edicaoPaciente);
+        this.textInputNome.setText(paciente.getNome());
+        this.textInputCpf.setText(paciente.getCpf());
+        this.textInputDtNascimento.setText(paciente.getDtNascimento());
+        this.textInputTelefone.setText(paciente.getTelefone());
+        this.spinnerUf.setEnabled(false);
     }
+
+    //Metodo para descobrir a posicao da Uf no Spinner
+    private int getIndex(String uf){
+        for (int i=0;i<this.spinnerUf.getCount();i++){
+            if (this.spinnerUf.getItemAtPosition(i).toString().equalsIgnoreCase(uf)){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+
+    //Preencher Medico
+    private Medico preencheMedico(){
+        Medico medico = new Medico(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
+                textInputDtNascimento.getText().toString(),textInputCpf.getText().toString(),
+                textInputCrm.getText().toString(),textInputEspecialidade.getText().toString() ,
+                spinnerUf.getSelectedItem().toString());
+        return medico;
+    }
+
+    //Preenche Paciente
+    private Paciente preenchePaciente(){
+        Paciente paciente = new Paciente(textInputNome.getText().toString() ,textInputTelefone.getText().toString(),
+                textInputDtNascimento.getText().toString(),textInputCpf.getText().toString());
+        return paciente;
+    }
+
+    //Cadastrar ou Editar
+    private void insereFirebase(){
+        //Medico Selecionado
+        if(radioButtonMedico.isChecked()){
+            Medico medico = preencheMedico();
+            MedicoController medicoController = new MedicoController();
+            if(medicoController.isDadosOk(medico)){
+                medicoDAO = new MedicoDAO();
+                medicoDAO.inserir(medico);
+                Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CadastroActivity.this, MedicoActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                CadastroActivity.this.startActivity(intent);
+            }
+            else{
+                Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        //Paciente Selecionado
+        else if(radioButtonPaciente.isChecked()){
+            Paciente paciente = preenchePaciente();
+            PacienteController pacienteController = new PacienteController();
+            if(pacienteController.isDadosOk(paciente)){
+                pacienteDAO = new PacienteDAO();
+                pacienteDAO.inserir(paciente);
+                Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CadastroActivity.this, PacienteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                CadastroActivity.this.startActivity(intent);
+            }
+            else{
+                Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            Toast.makeText(CadastroActivity.this, getString(R.string.selecioneRadio), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }

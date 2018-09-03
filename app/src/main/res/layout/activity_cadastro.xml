@@ -178,9 +178,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_x="264dp"
-            android:layout_y="0dp"
-            android:text="@string/editar"
+            android:layout_x="243dp"
+            android:layout_y="1dp"
+            android:text="@string/salvar"
             android:visibility="invisible" />
     </AbsoluteLayout>
 

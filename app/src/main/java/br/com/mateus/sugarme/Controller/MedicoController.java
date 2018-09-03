@@ -1,5 +1,7 @@
 package br.com.mateus.sugarme.Controller;
 
+import android.app.Activity;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,8 +50,9 @@ public class MedicoController {
         medicoDAO.excluir();
     }
 
-    public Medico recebeMedico() {
-        return medicoDAO.consultaMedico();
+    //Receber Médico
+    public void recebeMedico(Activity activity) {
+        medicoDAO.consultaMedico(activity);
     }
 
 

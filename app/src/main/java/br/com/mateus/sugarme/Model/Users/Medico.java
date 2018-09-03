@@ -1,6 +1,8 @@
 package br.com.mateus.sugarme.Model.Users;
 
-public class Medico {
+import java.io.Serializable;
+
+public class Medico implements Serializable {
     private String nome;
     private String telefone;
     private String dtNascimento;

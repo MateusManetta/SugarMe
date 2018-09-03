@@ -40,15 +40,7 @@ public class PacienteActivity extends AppCompatActivity {
         buttonEditarPaciente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Bloquear radioButton
-
-                //Trocar de Activity
-                Intent intent = new Intent(PacienteActivity.this, CadastroActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("radio","editarPaciente");
-                PacienteActivity.this.startActivity(intent);
-
-
+                pacienteController.recebePaciente(PacienteActivity.this);
             }
         });
 
