@@ -16,7 +16,7 @@
     <string name="especialidade">Especialidade</string>
     <string name="editar">Editar</string>
     <string name="excluir">Excluir</string>
-    <string name="dataInvalida">Data inválida</string>
+    <string name="dataInvalida">Data inválida!</string>
     <string name="confirmarExclusao">Confirmar Exclusão?</string>
     <string name="sim">Sim</string>
     <string name="nao">Nao</string>
@@ -25,4 +25,9 @@
     <string name="edicaoMedico">Edição Médico</string>
     <string name="salvar">Salvar</string>
     <string name="selecioneRadio">Selecione o tipo de usuário!</string>
+    <string name="telefoneInvalido">Telefone inválido!</string>
+    <string name="cpfInvalido">CPF inválido!</string>
+    <string name="crmInvalido">CRM inválido!</string>
+    <string name="especialidadeInvalida">Especialidade inválida!</string>
+    <string name="nomeInvalido">Nome inválido!</string>
 </resources>

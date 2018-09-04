@@ -1,6 +1,7 @@
 package br.com.mateus.sugarme.Controller;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,22 +19,27 @@ public class PacienteController {
     }
 
 
-    public boolean isDadosOk(Paciente paciente){
+    public boolean isDadosOk(Paciente paciente, Activity activity){
         if(isCpf(paciente.getCpf())){
             if(isTel(paciente.getTelefone())){
                 if (isData(paciente.getDtNascimento())){
-                    return true;
+                    if(!paciente.getNome().isEmpty()){
+                        return true;
+                    }
+                    else {
+                        Toast.makeText(activity, "Nome inválido!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
-//                    Toast.makeText(this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Data inválida!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-//                Toast.makeText(this, getString(R.string.telefoneInvalido), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Telefone inválido!", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-//            Toast.makeText(this, getString(R.string.cpfInvalido), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "CPF inválido", Toast.LENGTH_SHORT).show();
         }
 
         return false;

@@ -250,7 +250,7 @@ public class CadastroActivity extends AppCompatActivity {
         if(radioButtonMedico.isChecked()){
             Medico medico = preencheMedico();
             MedicoController medicoController = new MedicoController();
-            if(medicoController.isDadosOk(medico)){
+            if(medicoController.isDadosOk(medico, CadastroActivity.this)){
                 medicoDAO = new MedicoDAO();
                 medicoDAO.inserir(medico);
                 Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
@@ -258,25 +258,19 @@ public class CadastroActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 CadastroActivity.this.startActivity(intent);
             }
-            else{
-                Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
-            }
 
         }
         //Paciente Selecionado
         else if(radioButtonPaciente.isChecked()){
             Paciente paciente = preenchePaciente();
             PacienteController pacienteController = new PacienteController();
-            if(pacienteController.isDadosOk(paciente)){
+            if(pacienteController.isDadosOk(paciente, CadastroActivity.this)){
                 pacienteDAO = new PacienteDAO();
                 pacienteDAO.inserir(paciente);
                 Toast.makeText(CadastroActivity.this, getString(R.string.inseridoSucesso), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CadastroActivity.this, PacienteActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 CadastroActivity.this.startActivity(intent);
-            }
-            else{
-                Toast.makeText(CadastroActivity.this, getString(R.string.dadosIncorretos), Toast.LENGTH_SHORT).show();
             }
         }
         else{
