@@ -19,37 +19,35 @@ public class MedicoController {
     }
 
     public boolean isDadosOk(Medico medico, final Activity activity){
-        if(isCpf(medico.getCpf())){
-            if(isTel(medico.getTelefone())){
-                if (isData(medico.getDtNascimento())) {
-                    if (!medico.getEspecialidade().isEmpty()){ //Se a especialidade e o CRM nao estiverem vazios
+        if(!medico.getNome().isEmpty()){
+            if(isData(medico.getDtNascimento())){
+                if (isCpf(medico.getCpf())) {
+                    if (isTel(medico.getTelefone())){
                         if (!medico.getCrm().isEmpty()) {
-                            if (!medico.getNome().isEmpty()) {
+                            if (!medico.getEspecialidade().isEmpty()) {
                                 return true;
                             } else {
-                                Toast.makeText(activity, "Nome inválido!", Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(activity, "Especialidade inválida!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(activity, "CRM inválido!", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
-                        Toast.makeText(activity, "Especialidade inválida!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Telefone inválido!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(activity, "Data inválida!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "CPF inválido!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-                Toast.makeText(activity, "Telefone inválido!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Data inválida!", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-            Toast.makeText(activity, "CPF inválido!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Nome inválido!", Toast.LENGTH_SHORT).show();
         }
-
         return false;
     }
 

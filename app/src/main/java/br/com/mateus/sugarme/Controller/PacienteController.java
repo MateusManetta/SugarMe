@@ -20,28 +20,27 @@ public class PacienteController {
 
 
     public boolean isDadosOk(Paciente paciente, Activity activity){
-        if(isCpf(paciente.getCpf())){
-            if(isTel(paciente.getTelefone())){
-                if (isData(paciente.getDtNascimento())){
-                    if(!paciente.getNome().isEmpty()){
+        if(!paciente.getNome().isEmpty()){
+            if(isData(paciente.getDtNascimento())){
+                if (isCpf(paciente.getCpf())) {
+                    if (isTel(paciente.getTelefone())){
                         return true;
                     }
-                    else {
-                        Toast.makeText(activity, "Nome inválido!", Toast.LENGTH_SHORT).show();
+                    else{
+                        Toast.makeText(activity, "Telefone inválido!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(activity, "Data inválida!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "CPF inválido!", Toast.LENGTH_SHORT).show();
                 }
             }
             else {
-                Toast.makeText(activity, "Telefone inválido!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Data inválida!", Toast.LENGTH_SHORT).show();
             }
         }
         else{
-            Toast.makeText(activity, "CPF inválido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Nome inválido!", Toast.LENGTH_SHORT).show();
         }
-
         return false;
     }
 
